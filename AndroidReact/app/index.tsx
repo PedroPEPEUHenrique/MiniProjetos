@@ -12,7 +12,7 @@ export default function Inicio() {
         backgroundColor: "#1E90FF",
         padding: 20,
         marginTop: 50,
-        marginBottom: 50,
+        marginBottom: 20,
       }}
     >
       {}
