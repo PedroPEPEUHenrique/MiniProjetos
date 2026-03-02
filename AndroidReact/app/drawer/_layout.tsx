@@ -2,6 +2,7 @@ import { Drawer } from 'expo-router/drawer';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import { DrawerActions } from '@react-navigation/native';
+import { router } from 'expo-router';
 
 export default function DrawerLayout() {
   return (
@@ -9,15 +10,19 @@ export default function DrawerLayout() {
       screenOptions={({ navigation }) => ({
         headerTitleAlign: 'center',
         headerTitle: 'React Native | EFG',
+        drawerActiveTintColor: '#000', 
         
         headerLeft: () => (
-          <Ionicons 
-            name="logo-react" 
-            size={28} 
-            color="black" 
+          <TouchableOpacity 
+            onPress={() => router.replace('/')} 
             style={{ marginLeft: 15 }}
-             
-          />
+          >
+            <Ionicons 
+              name="logo-react" 
+              size={28} 
+              color="black" 
+            />
+          </TouchableOpacity>
         ),
 
         headerRight: () => (
@@ -28,24 +33,39 @@ export default function DrawerLayout() {
             <Ionicons name="menu" size={30} color="black" />
           </TouchableOpacity>
         ),
-        
-
-        drawerPosition: 'right', 
       })}
     >
-      <Drawer.Screen
-        name="conta"
-        options={{
-          drawerLabel: 'Bem vindo',
-          title: 'Bem vindo', 
-        }}
+      {}
+      <Drawer.Screen 
+        name="conta" 
+        options={{ 
+          drawerLabel: 'Apresenta',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          )
+        }} 
       />
-      <Drawer.Screen
-        name="extrato"
-        options={{
+
+      {}
+      <Drawer.Screen 
+        name="extrato" 
+        options={{ 
           drawerLabel: 'Contador',
-          title: 'Contador',
-        }}
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="calculator-outline" size={size} color={color} />
+          )
+        }} 
+      />
+
+      {}
+      <Drawer.Screen 
+        name="outra" 
+        options={{ 
+          drawerLabel: 'Outra',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="bar-chart-outline" size={size} color={color} />
+          )
+        }} 
       />
     </Drawer>
   );
